@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Virtual Browser</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .virtual-browser {
+            border: 3px solid #333;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .virtual-browser iframe {
+            width: 800px;
+            height: 600px;
+            margin-top: 10px;
+        }
+        #status {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="virtual-browser">
+        <h1>Virtual Browser</h1>
+        <input type="text" id="url" placeholder="Enter URL here">
+        <button id="loadURL">Load URL</button>
+        <button id="fullscreen">Go Fullscreen</button>
+        <iframe id="iframe" src=""></iframe>
+        <p id="status">No page loaded</p>
+    </div>
+
+    <!-- Insert your AdSense code here -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1756533489271668" crossorigin="anonymous"></script>
+    <!-- Example ad slot, you should replace with your actual ad slot -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-1756533489271668"
+        data-ad-slot="yyyyyyyyyyyy"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <script>
+        var iframe = document.getElementById("iframe");
+        var status = document.getElementById("status");
+
+        document.getElementById("loadURL").addEventListener("click", function() {
+            var url = document.getElementById("url").value;
+            iframe.src = url;
+            status.textContent = "Loading " + url + "...";
+        });
+
+        iframe.addEventListener("load", function() {
+            status.textContent = "Currently displaying " + iframe.src;
+        });
+
+        document.getElementById("fullscreen").addEventListener("click", function() {
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
